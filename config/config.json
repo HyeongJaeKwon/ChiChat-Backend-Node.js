@@ -17,7 +17,7 @@
     "username": "n5offpfpmlzhxl67",
     "password": "zpcksoi14f8jd13g",
     "database": "vmdjyv8f99bkxp5n",
-    "host": "ro2padgkirvcf55m.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306",
+    "host": "ro2padgkirvcf55m.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
