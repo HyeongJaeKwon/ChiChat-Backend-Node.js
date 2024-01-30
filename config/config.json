@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "jae",
+    "password": "135789",
+    "database": "postitdb",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "jae",
+    "password": "135789",
+    "database": "postitdb",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "jae",
+    "password": "135789",
+    "database": "postitdb",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
