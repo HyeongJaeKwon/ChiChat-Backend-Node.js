@@ -1,18 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const { Posts, Likes } = require("../models");
+const { Posts, Likes, Adds } = require("../models");
 const { validateToken } = require("../middlewares/AuthMiddleware");
 
 router.get("/", validateToken, async (req, res) => {
-  console.log("fuck");
+  console.log("get /posts/");
   const listofPosts = await Posts.findAll({ include: [Likes] });
   if (req.user) {
     const likedPosts = await Likes.findAll({ where: { UserId: req.user.id } });
-    return res.json({ listofPosts: listofPosts, likedPosts: likedPosts });
+    const addedPosts = await Adds.findAll({where: {UserId: req.user.id}})
+    return res.json({ listofPosts: listofPosts, likedPosts: likedPosts , addedPosts: addedPosts});
   } else {
     const likedPosts = [];
     return res.json({ listofPosts: listofPosts, likedPosts: likedPosts });
   }
+});
+
+router.get("/noId", async (req, res) => {
+  const listofPosts = await Posts.findAll({ include: [Likes] });
+    const likedPosts = [];
+    return res.json({ listofPosts: listofPosts, likedPosts: likedPosts });
 });
 
 router.get("/byId/:id", async (req, res) => {
@@ -26,6 +33,12 @@ router.get("/byUserId/:uId", async (req, res) => {
   const postss = await Posts.findAll({where:{UserId: uId}, include:[Likes] });
   res.json(postss);
 });
+
+router.get("/byCategory/:title", validateToken, async (req,res) =>{
+  const cate = req.params.title;
+  const postss = await Posts.findAll({where:{UserId: req.user.id, title: cate}})
+  res.json(postss);
+})
 
 
 //ALL post request needs to be ASYNC

@@ -18,6 +18,10 @@ const userRouter = require("./routes/Users");
 app.use("/auth", userRouter);
 const likeRouter = require("./routes/Likes");
 app.use("/like", likeRouter);
+const gptRouter = require("./routes/GPT");
+app.use("/gpt", gptRouter);
+const addRouter = require("./routes/Added");
+app.use("/add", addRouter);
 
 db.sequelize
   .sync()

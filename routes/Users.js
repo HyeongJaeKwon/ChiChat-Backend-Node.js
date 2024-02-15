@@ -61,6 +61,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/auth", validateToken, (req, res) => {
+  console.log("2222222222222222222222222")
   res.json(req.user);
 });
 
