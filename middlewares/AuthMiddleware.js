@@ -8,7 +8,7 @@ const validateToken = (req,res,next) => {
     }
     
     try{
-        const validToken = verify(accessToken, "importantsecret")
+        const validToken = verify(accessToken, process.env.JWTSECRET)
         if(validToken){
             req.user = validToken;
             return next();
